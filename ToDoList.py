@@ -1,5 +1,3 @@
-
-
 def add_item(action):
     to_do.append(action)
 
