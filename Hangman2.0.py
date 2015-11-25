@@ -98,15 +98,14 @@ while True:
         if userInput not in guessed:
             if userInput in fullWord:
                 print("That letter is in the word.")
-                occurrence = fullWord.count(userInput)
-                for i in range(occurrence):
-                    location = fullWordArray.index(userInput)
 
-                    print(location)
+                guessed.append(userInput)
+                for i in array:
+                    location = fullWordArray.index(userInput)
                     array[location] = "*"
-                    guessed.append(userInput)
-                    array = [w.replace("*", userInput) for w in array]
-                    print(array)
+
+                array = [w.replace("*", userInput) for w in array]
+                print(array)
 
                 next_stage(tries)
 
