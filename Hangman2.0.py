@@ -78,9 +78,16 @@ def next_stage(stage):
         print("You lose! The word was:", fullWord)
 
 fullWord = "banana"
+fullWordArray = []
+array = []
 guessed = []
 tries = 0
-location = []
+
+for i in fullWord:
+    fullWordArray.append(i)
+
+for i in range(len(fullWord)):
+    array.append("_")
 
 while True:
     user = input("Guess a letter: ")
@@ -91,13 +98,16 @@ while True:
         if userInput not in guessed:
             if userInput in fullWord:
                 print("That letter is in the word.")
-                location.append(fullWord.index(userInput))
-                guessed.append(userInput)
-                for i in range(1, len(fullWord)):
-                    if i in location:
-                        print(location[i])
-                    else:
-                        print("_")
+                occurrence = fullWord.count(userInput)
+                for i in range(occurrence):
+                    location = fullWordArray.index(userInput)
+
+                    print(location)
+                    array[location] = "*"
+                    guessed.append(userInput)
+                    array = [w.replace("*", userInput) for w in array]
+                    print(array)
+
                 next_stage(tries)
 
             elif userInput not in fullWord:
