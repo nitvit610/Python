@@ -101,8 +101,14 @@ while True:
 
                 guessed.append(userInput)
                 for i in array:
-                    location = fullWordArray.index(userInput)
-                    array[location] = "*"
+                    if i == userInput:
+                        location = fullWordArray.index(userInput)
+                        array[location] = "*"
+                        fullWordArray[location] = "*"
+
+                        print(array)
+                        print(fullWordArray)
+
 
                 array = [w.replace("*", userInput) for w in array]
                 print(array)
